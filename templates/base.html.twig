@@ -18,8 +18,15 @@
     </head>
     <body>
         <nav class="nav">
-                    <a class="nav-link" href="{{ path('app_location_index') }}">Cities</a>
-                    <a class="nav-link" href="{{ path('app_measurement_index') }}">Measurements</a>
+            <a class="nav-link" href="{{ path('app_location_index') }}">Cities</a>
+            <a class="nav-link" href="{{ path('app_measurement_index') }}">Measurements</a>
+
+            {% if is_granted('ROLE_USER') %}
+                <a href="{{ path('app_logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ path('app_login') }}">Login</a>
+            {% endif %}
+
         </nav>
         <div class="container">
         {% block body %}{% endblock %}
